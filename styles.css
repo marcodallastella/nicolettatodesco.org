@@ -1077,6 +1077,11 @@ img {
 
 @media (max-width: 600px) {
 
+  /* ---- Header ---- */
+  .header__name {
+    font-size: 24px;
+  }
+
   /* ---- Sections: natural height, consistent padding ---- */
   .quote-block,
   .about,
@@ -1099,9 +1104,13 @@ img {
 
   .hero__image {
     order: -1;
-    height: 50vw;
-    min-height: 220px;
-    max-height: 300px;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+  }
+
+  .hero__img {
+    height: auto;
   }
 
   .hero__text {
@@ -1110,7 +1119,7 @@ img {
   }
 
   .hero__title {
-    font-size: clamp(28px, 8vw, 42px);
+    font-size: clamp(24px, 7vw, 34px);
     margin-bottom: 20px;
   }
 
@@ -1126,6 +1135,10 @@ img {
   }
 
   /* ---- Pull quote ---- */
+  .quote-block {
+    padding-top: 40px;
+  }
+
   .pull-quote p {
     font-size: clamp(22px, 6vw, 32px);
   }
@@ -1156,7 +1169,11 @@ img {
   }
 
   .album__cover {
-    max-width: 200px;
+    max-width: 260px;
+  }
+
+  .album__title {
+    font-size: 28px;
   }
 
   .album__links {
