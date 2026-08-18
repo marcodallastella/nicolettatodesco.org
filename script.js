@@ -1,5 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // --- Header: transparent over hero, solid after scroll ---
+  const header = document.getElementById('header');
+  const onScroll = () => {
+    header.classList.toggle('header--scrolled', window.scrollY > 40);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
   // --- Mobile menu ---
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('mobile-menu');
