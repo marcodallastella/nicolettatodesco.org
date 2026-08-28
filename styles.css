@@ -18,6 +18,7 @@
   --ink-faint: rgba(255, 255, 255, 0.42);
   --rule:      rgba(255, 255, 255, 0.18);
   --rose:      #eabec4;
+  --gold:      #f4de9f;
   --bg:        #464e63;
   --bg-deep:   #3a4254;
   --bg-dark:   #2e3444;
@@ -158,9 +159,9 @@ img {
 }
 
 .header__name {
-  font-family: "Xanh Mono", monospace;
-  font-size: 20px;
-  font-weight: 500;
+  font-family: var(--mono);
+  font-size: 17px;
+  font-weight: 400;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -503,7 +504,7 @@ img {
   line-height: 1.1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--gold);
   text-align: center;
   margin-bottom: 64px;
 }
@@ -536,6 +537,7 @@ img {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   line-height: 1.15;
+  color: var(--gold);
   margin-bottom: 24px;
 }
 
