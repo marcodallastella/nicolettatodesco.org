@@ -62,6 +62,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // --- Lyrics pop-up ---
+  const lyricsModal = document.getElementById('lyrics-modal');
+  if (lyricsModal) {
+    const modalTitle = lyricsModal.querySelector('.lyrics-modal__title');
+    const modalBody = lyricsModal.querySelector('.lyrics-modal__body');
+
+    document.querySelectorAll('.album__track-name').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lyrics = document.getElementById(btn.dataset.lyrics);
+        if (!lyrics) return;
+        modalTitle.textContent = btn.textContent;
+        modalBody.innerHTML = lyrics.innerHTML;
+        lyricsModal.showModal();
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    lyricsModal.addEventListener('click', (e) => {
+      // A click on the dialog element itself is a click on the backdrop
+      if (e.target === lyricsModal || e.target.closest('[data-close]')) {
+        lyricsModal.close();
+      }
+    });
+
+    lyricsModal.addEventListener('close', () => {
+      document.body.style.overflow = '';
+    });
+  }
+
   // --- Contact form ---
   const form = document.getElementById('contact-form');
   if (form) {
