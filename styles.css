@@ -1,6 +1,7 @@
 /* ========================================
    Nicoletta Todesco
-   Monospace / condensed-uppercase aesthetic
+   Concert-poster aesthetic:
+   near-black, amber accent, condensed display
    ======================================== */
 
 *,
@@ -13,16 +14,21 @@
 
 :root {
   --ink:       #ffffff;
-  --ink-mid:   rgba(255, 255, 255, 0.75);
-  --ink-dim:   rgba(255, 255, 255, 0.6);
-  --ink-faint: rgba(255, 255, 255, 0.42);
-  --rule:      rgba(255, 255, 255, 0.18);
-  --rose:      #eabec4;
-  --bg:        #464e63;
-  --bg-deep:   #3a4254;
-  --bg-dark:   #2e3444;
-  --heading: 'Abel', 'Helvetica Neue', Arial, sans-serif;
-  --mono:  'Source Code Pro', 'Courier New', monospace;
+  --ink-mid:   rgba(255, 255, 255, 0.72);
+  --ink-dim:   rgba(255, 255, 255, 0.56);
+  --ink-faint: rgba(255, 255, 255, 0.48);
+  --rule:      rgba(255, 255, 255, 0.14);
+  --accent:      #ff9f43;
+  --bg:        #14161d;
+  --bg-deep:   #1b1e28;
+  --bg-dark:   #0b0d12;
+  --heading: 'Anton', 'Haettenschweiler', 'Arial Narrow', Impact, sans-serif;
+  --body:  'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg-dark);
 }
 
 html {
@@ -30,13 +36,13 @@ html {
 }
 
 body {
-  font-family: var(--mono);
+  font-family: var(--body);
   font-weight: 400;
-  font-size: 14px;
-  letter-spacing: 0.4px;
+  font-size: 16px;
+  letter-spacing: 0;
   color: var(--ink);
   background: var(--bg);
-  line-height: 1.75;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -59,38 +65,40 @@ img {
 }
 
 /* ========================================
-   BUTTONS — ghost style
+   BUTTONS — solid amber primary, ghost secondary
    ======================================== */
 
 .btn {
   display: inline-block;
-  padding: 14px 30px;
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 400;
+  padding: 15px 32px;
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--ink);
-  background: transparent;
-  border: 2px solid var(--ink);
+  color: var(--bg-dark);
+  background: var(--accent);
+  border: 2px solid var(--accent);
   border-radius: 0;
   cursor: pointer;
-  transition: background 0.15s linear, color 0.15s linear;
+  transition: background 0.15s linear, color 0.15s linear, border-color 0.15s linear;
 }
 
 .btn:hover {
-  background: var(--ink);
-  color: var(--bg-dark);
+  background: transparent;
+  color: var(--accent);
 }
 
 .btn--outline {
   background: transparent;
   color: var(--ink);
+  border-color: var(--ink);
 }
 
 .btn--outline:hover {
   background: var(--ink);
   color: var(--bg-dark);
+  border-color: var(--ink);
 }
 
 /* ========================================
@@ -103,8 +111,8 @@ img {
   align-items: center;
   justify-content: center;
   color: var(--ink-dim);
-  font-family: var(--mono);
-  font-size: 10px;
+  font-family: var(--body);
+  font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -140,7 +148,7 @@ img {
 }
 
 .header--scrolled {
-  background: rgba(58, 66, 84, 0.96);
+  background: rgba(11, 13, 18, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--rule);
@@ -158,13 +166,18 @@ img {
 }
 
 .header__name {
-  font-family: "Xanh Mono", monospace;
-  font-size: 30px;
+  font-family: var(--heading);
+  font-size: 26px;
   font-weight: 400;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   white-space: nowrap;
-  color: var(--rose);
+  color: var(--accent);
+  transition: color 0.15s ease-in-out;
+}
+
+.header__name:hover {
+  color: var(--ink);
 }
 
 .header__nav {
@@ -173,8 +186,8 @@ img {
 }
 
 .header__nav a {
-  font-family: var(--mono);
-  font-size: 12px;
+  font-family: var(--body);
+  font-size: 13px;
   font-weight: 400;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -183,7 +196,7 @@ img {
 }
 
 .header__nav a:hover {
-  color: var(--ink);
+  color: var(--accent);
 }
 
 .header__socials {
@@ -200,7 +213,7 @@ img {
 }
 
 .header__socials a:hover {
-  color: var(--ink);
+  color: var(--accent);
 }
 
 /* Hamburger */
@@ -264,12 +277,18 @@ img {
 
 .mobile-menu__nav a {
   font-family: var(--heading);
-  font-size: 34px;
+  font-size: clamp(38px, 12vw, 56px);
   font-weight: 400;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  line-height: 1;
+  line-height: 1.05;
   color: var(--ink);
+  transition: color 0.15s ease-in-out;
+}
+
+.mobile-menu__nav a:hover,
+.mobile-menu__nav a:active {
+  color: var(--accent);
 }
 
 .mobile-menu__socials {
@@ -278,8 +297,8 @@ img {
 }
 
 .mobile-menu__socials a {
-  font-family: var(--mono);
-  font-size: 11px;
+  font-family: var(--body);
+  font-size: 12px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--ink-dim);
@@ -298,35 +317,84 @@ img {
   justify-content: center;
   text-align: center;
   padding: 120px 5vw 7vh;
-  background: #333b52 url('images/cockroachdiary_cover.jpg') center / contain no-repeat;
+  background: var(--bg-dark);
+  overflow: hidden;
+}
+
+/* Blurred copy of the cover bleeding to the edges, so the square art
+   never reads as a panel floating on the black. It must use the same
+   `contain` framing as the sharp layer below, or the two don't
+   register and the glow drifts off the artwork it belongs to. */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('images/cockroachdiary_cover.jpg') center / contain no-repeat;
+  filter: blur(64px) saturate(1.5) brightness(0.55);
+  transform: scale(1.9);
+  pointer-events: none;
+}
+
+/* The sharp cover. The scrim only darkens enough to seat the
+   header and the title — the art stays legible top to bottom. */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom,
+      rgba(11, 13, 18, 0.62) 0%,
+      rgba(11, 13, 18, 0.06) 18%,
+      rgba(11, 13, 18, 0) 40%,
+      rgba(11, 13, 18, 0.26) 62%,
+      rgba(11, 13, 18, 0.52) 100%),
+    url('images/cockroachdiary_cover.jpg') center / contain no-repeat;
+}
+
+/* On narrow screens the contained square leaves a hard edge at the
+   sides, so let the art fill the frame instead. */
+@media (max-width: 700px) {
+  .hero::after {
+    background:
+      linear-gradient(to bottom,
+        rgba(11, 13, 18, 0.62) 0%,
+        rgba(11, 13, 18, 0.08) 20%,
+        rgba(11, 13, 18, 0) 38%,
+        rgba(11, 13, 18, 0.30) 62%,
+        rgba(11, 13, 18, 0.56) 100%),
+      url('images/cockroachdiary_cover.jpg') center / cover no-repeat;
+  }
 }
 
 .hero__inner {
   position: relative;
   z-index: 1;
-  max-width: 900px;
+  max-width: 1000px;
 }
 
 .hero__title {
-  font-family: var(--mono);
-  font-size: 14px;
+  font-family: var(--heading);
+  font-size: clamp(38px, 9.5vw, 112px);
   font-weight: 400;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.01em;
+  line-height: 0.9;
   text-transform: uppercase;
+  text-wrap: balance;
   color: var(--ink);
-  margin-bottom: 28px;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+  margin-bottom: 34px;
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.7);
 }
 
 .hero__credit {
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--ink-dim);
+  color: var(--ink-mid);
   margin-top: 28px;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.9);
 }
 
 .hero__buttons {
@@ -339,10 +407,15 @@ img {
 .hero__buttons .btn {
   min-width: 260px;
   text-align: center;
-  background: rgba(51, 59, 82, 0.35);
 }
 
-.hero__buttons .btn:hover {
+.hero__buttons .btn--outline {
+  background: rgba(11, 13, 18, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.hero__buttons .btn--outline:hover {
   background: var(--ink);
 }
 
@@ -368,27 +441,28 @@ img {
 .pull-quote::before {
   content: '';
   display: block;
-  width: 40px;
-  height: 1px;
-  background: var(--ink-dim);
+  width: 56px;
+  height: 3px;
+  background: var(--accent);
   margin: 0 auto 40px;
 }
 
 .pull-quote p {
-  font-family: var(--mono);
-  font-size: clamp(17px, 2.4vw, 24px);
-  font-weight: 300;
-  line-height: 1.6;
+  font-family: var(--body);
+  font-size: clamp(21px, 3.1vw, 33px);
+  font-weight: 400;
+  line-height: 1.4;
+  text-wrap: balance;
   color: var(--ink);
   margin-bottom: 24px;
 }
 
 .pull-quote cite {
-  font-family: var(--mono);
-  font-size: 11px;
+  font-family: var(--body);
+  font-size: 12px;
   font-style: normal;
-  font-weight: 400;
-  color: var(--ink-dim);
+  font-weight: 500;
+  color: var(--accent);
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -422,17 +496,17 @@ img {
 }
 
 .about__text p {
-  font-family: var(--mono);
-  font-size: 14px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 16px;
+  font-weight: 400;
   color: var(--ink-mid);
-  line-height: 1.9;
+  line-height: 1.75;
   margin-bottom: 20px;
 }
 
 .about__lead {
-  font-family: var(--mono) !important;
-  font-size: 17px !important;
+  font-family: var(--body) !important;
+  font-size: 19px !important;
   font-weight: 400 !important;
   color: var(--ink) !important;
   line-height: 1.75 !important;
@@ -460,8 +534,8 @@ img {
 
 .highlight__year {
   display: inline-block;
-  font-family: var(--mono);
-  font-size: 10px;
+  font-family: var(--body);
+  font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -471,19 +545,19 @@ img {
 
 .highlight h3 {
   font-family: var(--heading);
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  line-height: 1.3;
+  line-height: 1.05;
   margin-bottom: 10px;
   color: var(--ink);
 }
 
 .highlight p {
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 15px;
+  font-weight: 400;
   color: var(--ink-mid);
   line-height: 1.7;
 }
@@ -498,14 +572,23 @@ img {
 
 .section-title {
   font-family: var(--heading);
-  font-size: clamp(30px, 3.8vw, 44px);
+  font-size: clamp(40px, 7vw, 82px);
   font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: 0.08em;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
   color: var(--ink);
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 56px;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  margin: 26px auto 0;
 }
 
 /* ========================================
@@ -531,27 +614,27 @@ img {
 
 .album__title {
   font-family: var(--heading);
-  font-size: clamp(28px, 3.4vw, 40px);
+  font-size: clamp(38px, 5.4vw, 66px);
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  line-height: 1.15;
+  line-height: 0.95;
   margin-bottom: 24px;
 }
 
 .album__desc {
-  font-family: var(--mono);
-  font-size: 14px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 16px;
+  font-weight: 400;
   color: var(--ink-mid);
-  line-height: 1.85;
+  line-height: 1.7;
   margin-bottom: 14px;
 }
 
 .album__credit {
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 400;
   color: var(--ink-dim);
   letter-spacing: 0.04em;
   margin-bottom: 40px;
@@ -569,23 +652,24 @@ img {
   display: flex;
   align-items: baseline;
   gap: 18px;
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 15px;
+  font-weight: 400;
   color: var(--ink-mid);
   padding: 7px 0;
 }
 
 .album__tracks li::before {
   content: counter(track, decimal-leading-zero);
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 500;
   letter-spacing: 0.1em;
-  color: var(--ink-faint);
+  color: var(--accent);
 }
 
 .album__track-time {
   margin-left: auto;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   color: var(--ink-faint);
 }
@@ -607,14 +691,14 @@ img {
 
 .album__track-name:hover,
 .album__track-name:focus-visible {
-  color: var(--rose);
-  text-decoration-color: var(--rose);
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
 .album__tracks-hint {
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 400;
   letter-spacing: 0.08em;
   color: var(--ink-faint);
   margin: -32px 0 44px;
@@ -638,7 +722,9 @@ img {
 }
 
 .lyrics-modal::backdrop {
-  background: rgba(26, 30, 40, 0.7);
+  background: rgba(5, 6, 9, 0.82);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 .lyrics-modal__inner {
@@ -653,9 +739,9 @@ img {
   background: none;
   border: none;
   padding: 6px;
-  font-family: var(--mono);
+  font-family: var(--body);
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1;
   color: var(--ink-dim);
   cursor: pointer;
@@ -663,23 +749,25 @@ img {
 }
 
 .lyrics-modal__close:hover {
-  color: var(--rose);
+  color: var(--accent);
 }
 
 .lyrics-modal__title {
   font-family: var(--heading);
-  font-size: 26px;
+  font-size: 34px;
   font-weight: 400;
-  letter-spacing: 0.04em;
-  color: var(--rose);
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--accent);
   margin-bottom: 24px;
 }
 
 .lyrics-modal__body {
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.9;
+  font-family: var(--body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
   color: var(--ink-mid);
 }
 
@@ -703,8 +791,8 @@ img {
 }
 
 .album__links a {
-  font-family: var(--mono);
-  font-size: 12px;
+  font-family: var(--body);
+  font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -715,8 +803,8 @@ img {
 }
 
 .album__links a:hover {
-  color: var(--ink);
-  border-color: var(--ink);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 /* ========================================
@@ -751,17 +839,18 @@ img {
 
 .project h3 {
   font-family: var(--heading);
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
   text-transform: uppercase;
   margin-bottom: 6px;
 }
 
 .project p {
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 15px;
+  font-weight: 400;
   color: var(--ink-mid);
 }
 
@@ -795,37 +884,38 @@ img {
 
 .tour__day {
   display: block;
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 400;
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--ink-dim);
+  color: var(--accent);
   margin-bottom: 8px;
 }
 
 .tour__venue {
   font-family: var(--heading);
-  font-size: 26px;
+  font-size: clamp(28px, 3.4vw, 38px);
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
   text-transform: uppercase;
   color: var(--ink);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .tour__location {
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 400;
   color: var(--ink-dim);
   letter-spacing: 0.06em;
 }
 
 .tour__program {
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 400;
   color: var(--ink-mid);
   white-space: nowrap;
   letter-spacing: 0.08em;
@@ -841,7 +931,7 @@ img {
 
 .btn--sm {
   padding: 9px 20px;
-  font-size: 10px;
+  font-size: 11px;
   border-width: 1px;
 }
 
@@ -905,8 +995,8 @@ img {
 
 .score-card__type {
   display: inline-block;
-  font-family: var(--mono);
-  font-size: 10px;
+  font-family: var(--body);
+  font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -916,19 +1006,19 @@ img {
 
 .score-card__title {
   font-family: var(--heading);
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  line-height: 1.2;
+  line-height: 1.05;
   color: var(--ink);
   margin-bottom: 10px;
 }
 
 .score-card__desc {
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 15px;
+  font-weight: 400;
   color: var(--ink-mid);
   line-height: 1.7;
   margin-bottom: 24px;
@@ -942,9 +1032,10 @@ img {
 
 .score-card__price {
   font-family: var(--heading);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 400;
-  color: var(--ink);
+  letter-spacing: 0.01em;
+  color: var(--accent);
 }
 
 /* ========================================
@@ -961,9 +1052,9 @@ img {
 }
 
 .contact__intro {
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 15px;
+  font-weight: 400;
   color: var(--ink-mid);
   text-align: center;
   margin-bottom: 48px;
@@ -979,9 +1070,9 @@ img {
 .contact__form textarea {
   width: 100%;
   padding: 14px 0;
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 15px;
+  font-weight: 400;
   letter-spacing: 0.04em;
   color: var(--ink);
   background: transparent;
@@ -995,13 +1086,13 @@ img {
 .contact__form input:focus,
 .contact__form textarea:focus {
   outline: none;
-  border-color: var(--ink);
+  border-color: var(--accent);
 }
 
 .contact__form input::placeholder,
 .contact__form textarea::placeholder {
   color: var(--ink-dim);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -1033,17 +1124,18 @@ img {
 
 .newsletter h2 {
   font-family: var(--heading);
-  font-size: 34px;
+  font-size: clamp(34px, 5vw, 52px);
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.01em;
+  line-height: 1;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .newsletter p {
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 300;
+  font-family: var(--body);
+  font-size: 15px;
+  font-weight: 400;
   color: var(--ink-mid);
   margin-bottom: 28px;
 }
@@ -1056,8 +1148,8 @@ img {
 .newsletter__form input {
   flex: 1;
   padding: 12px 0;
-  font-family: var(--mono);
-  font-size: 13px;
+  font-family: var(--body);
+  font-size: 15px;
   border: none;
   background: transparent;
   color: var(--ink);
@@ -1069,7 +1161,7 @@ img {
 
 .newsletter__form input::placeholder {
   color: var(--ink-dim);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -1078,7 +1170,7 @@ img {
   background: transparent;
   color: var(--ink);
   border: none;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   padding: 12px 0 12px 20px;
 }
@@ -1094,6 +1186,8 @@ img {
 
 .footer {
   padding: 40px 0;
+  background: var(--bg-dark);
+  border-top: 1px solid var(--rule);
 }
 
 .footer__inner {
@@ -1103,8 +1197,8 @@ img {
 }
 
 .footer p {
-  font-family: var(--mono);
-  font-size: 11px;
+  font-family: var(--body);
+  font-size: 12px;
   color: var(--ink-dim);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1116,8 +1210,8 @@ img {
 }
 
 .footer__socials a {
-  font-family: var(--mono);
-  font-size: 11px;
+  font-family: var(--body);
+  font-size: 12px;
   color: var(--ink-dim);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1125,7 +1219,7 @@ img {
 }
 
 .footer__socials a:hover {
-  color: var(--ink);
+  color: var(--accent);
 }
 
 /* ========================================
@@ -1209,8 +1303,8 @@ img {
 
   /* ---- Header ---- */
   .header__name {
-    font-size: 13px;
-    letter-spacing: 0.2em;
+    font-size: 19px;
+    letter-spacing: 0.03em;
   }
 
   .header__inner {
@@ -1254,7 +1348,7 @@ img {
 
   /* ---- Pull quote ---- */
   .pull-quote p {
-    font-size: clamp(15px, 4.5vw, 19px);
+    font-size: clamp(18px, 5vw, 22px);
   }
 
   .pull-quote--secondary {
@@ -1381,9 +1475,9 @@ img {
     align-self: stretch;
     text-align: center;
     padding: 12px 28px;
-    background: var(--ink);
+    background: var(--accent);
     color: var(--bg-dark);
-    border: 1px solid var(--ink);
+    border: 1px solid var(--accent);
     margin-top: 16px;
     min-height: 44px;
     display: inline-flex;
