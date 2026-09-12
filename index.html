@@ -68,6 +68,8 @@
        required even same-origin: fonts are always fetched in CORS mode. -->
   <link rel="preload" href="./fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="./fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Largest element on first paint, so fetch it early -->
+  <link rel="preload" href="./images/hero-poster.jpg" as="image">
   <link rel="stylesheet" href="./styles.css">
 </head>
 
@@ -154,17 +156,39 @@
 
     <!-- Hero -->
     <section class="hero" id="hero">
+      <!-- Silent looping clip. The source lives in data-src so script.js can
+           decide whether to load it at all (it skips reduced-motion and
+           Save-Data users, who keep the poster). -->
+      <video class="hero__video" id="hero-video" muted loop playsinline preload="none"
+        poster="images/hero-poster.jpg" data-src="video/hero-loop.mp4" aria-hidden="true" tabindex="-1"></video>
       <div class="hero__inner">
         <p class="hero__title">The Cockroach Diary</p>
         <div class="hero__buttons">
-          <a href="https://open.spotify.com/album/5UpOgjrms3rAONojmuovnQ" target="_blank" rel="noopener"
-            class="btn">Listen on Spotify</a>
+          <!-- <a href="https://open.spotify.com/album/5UpOgjrms3rAONojmuovnQ" target="_blank" rel="noopener"
+            class="btn">Listen on Spotify</a> -->
           <a href="https://nicolettatodesco.bandcamp.com/album/the-cockroach-diary" target="_blank" rel="noopener"
             class="btn btn--outline">Buy on Bandcamp</a>
         </div>
-        <p class="hero__credit">Album art by Manuela Simoncelli</p>
+        <button class="hero__watch" id="watch-video" type="button">
+          <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+            <circle cx="13" cy="13" r="12" fill="none" stroke="currentColor" stroke-width="1.5" />
+            <path d="M10.5 8.5l7 4.5-7 4.5z" fill="currentColor" />
+          </svg>
+          Watch with sound
+        </button>
+        <p class="hero__credit">Visuals by <a href="https://www.xuanfilms.com/">Xuan</a></p>
       </div>
     </section>
+
+    <!-- Promo video pop-up. The source is attached on open so the full
+         file is never downloaded unless someone asks to watch it. -->
+    <dialog class="video-modal" id="video-modal" aria-label="The Cockroach Diary — promo video">
+      <button class="video-modal__close" data-close aria-label="Close video">&times;</button>
+      <div class="video-modal__frame">
+        <video id="promo-video" controls playsinline preload="none" poster="images/promo-poster.jpg"
+          data-src="video/promo.mp4"></video>
+      </div>
+    </dialog>
 
     <!-- Pull Quotes -->
     <section class="quote-block">

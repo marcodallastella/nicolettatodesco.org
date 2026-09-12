@@ -91,6 +91,71 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Promo video: the hero loop and the pop-up player share state ---
+  const videoModal = document.getElementById('video-modal');
+  const watchBtn = document.getElementById('watch-video');
+  const promoVideo = document.getElementById('promo-video');
+
+  // --- Hero promo loop ---
+  const heroVideo = document.getElementById('hero-video');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = Boolean(navigator.connection && navigator.connection.saveData);
+
+  if (heroVideo && !reducedMotion && !saveData) {
+    // Attached only after load, so the clip never competes with the fonts,
+    // the stylesheet or the poster for bandwidth
+    const startLoop = () => {
+      heroVideo.src = heroVideo.dataset.src;
+      heroVideo.play().catch(() => { /* refused: the poster stays */ });
+    };
+
+    if (document.readyState === 'complete') startLoop();
+    else window.addEventListener('load', startLoop, { once: true });
+
+    // Stop decoding once the hero is scrolled out of view
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!heroVideo.src || videoModal?.open) return;
+        if (entry.isIntersecting) heroVideo.play().catch(() => { });
+        else heroVideo.pause();
+      });
+    }, { threshold: 0.05 });
+    heroObserver.observe(heroVideo);
+  }
+
+  // --- Promo video pop-up ---
+  if (videoModal && watchBtn && promoVideo) {
+    watchBtn.addEventListener('click', () => {
+      // The full file is fetched here and nowhere else. preload flips to
+      // auto so it still buffers if play() is refused and the visitor
+      // has to press the control themselves.
+      if (!promoVideo.src) {
+        promoVideo.preload = 'auto';
+        promoVideo.src = promoVideo.dataset.src;
+      }
+      videoModal.showModal();
+      document.body.style.overflow = 'hidden';
+      if (heroVideo) heroVideo.pause();
+      promoVideo.play().catch(() => { /* the controls are still there */ });
+    });
+
+    videoModal.addEventListener('click', (e) => {
+      // A click on the dialog element itself is a click on the backdrop
+      if (e.target === videoModal || e.target.closest('[data-close]')) {
+        videoModal.close();
+      }
+    });
+
+    videoModal.addEventListener('close', () => {
+      document.body.style.overflow = '';
+      promoVideo.pause();
+      // Drop the source so a half-finished download stops here
+      promoVideo.removeAttribute('src');
+      promoVideo.load();
+      if (heroVideo && heroVideo.src) heroVideo.play().catch(() => { });
+    });
+  }
+
   // --- Contact form ---
   const form = document.getElementById('contact-form');
   if (form) {

@@ -76,6 +76,13 @@
   color: var(--bg-dark);
 }
 
+/* One keyboard-focus style everywhere, in the accent rather than the
+   browser's default blue */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -214,7 +221,7 @@ img {
   font-family: var(--heading);
   font-size: 26px;
   font-weight: 400;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   white-space: nowrap;
   color: var(--accent);
@@ -366,55 +373,51 @@ img {
   overflow: hidden;
 }
 
-/* Blurred copy of the cover bleeding to the edges, so the square art
-   never reads as a panel floating on the black. It must use the same
-   `contain` framing as the sharp layer below, or the two don't
-   register and the glow drifts off the artwork it belongs to. */
-.hero::before {
-  content: '';
+/* The promo loop. Its own frame is near-black at the edges, so it needs
+   no bleed treatment — it meets the page background on its own. The
+   poster carries first paint until the clip is ready. */
+.hero__video {
   position: absolute;
   inset: 0;
-  background: url('images/cockroachdiary_cover.jpg') center / contain no-repeat;
-  filter: blur(64px) saturate(1.5) brightness(0.55);
-  transform: scale(1.9);
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   pointer-events: none;
 }
 
-/* The sharp cover. The scrim only darkens enough to seat the
-   header and the title — the art stays legible top to bottom. */
+/* Scrim: only enough to seat the header at the top and the title at
+   the bottom. The video stays legible through the middle. */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
   pointer-events: none;
-  background:
-    linear-gradient(to bottom,
+  background: linear-gradient(to bottom,
       rgba(11, 13, 18, 0.62) 0%,
       rgba(11, 13, 18, 0.06) 18%,
-      rgba(11, 13, 18, 0) 40%,
-      rgba(11, 13, 18, 0.26) 62%,
-      rgba(11, 13, 18, 0.52) 100%),
-    url('images/cockroachdiary_cover.jpg') center / contain no-repeat;
+      rgba(11, 13, 18, 0) 36%,
+      rgba(11, 13, 18, 0.44) 60%,
+      rgba(11, 13, 18, 0.78) 100%);
 }
 
-/* On narrow screens the contained square leaves a hard edge at the
-   sides, so let the art fill the frame instead. */
+/* Portrait crops the wide clip hard, so the bright centre of the frame
+   lands right behind the title — it needs a heavier scrim than desktop. */
 @media (max-width: 700px) {
   .hero::after {
-    background:
-      linear-gradient(to bottom,
-        rgba(11, 13, 18, 0.62) 0%,
-        rgba(11, 13, 18, 0.08) 20%,
-        rgba(11, 13, 18, 0) 38%,
-        rgba(11, 13, 18, 0.30) 62%,
-        rgba(11, 13, 18, 0.56) 100%),
-      url('images/cockroachdiary_cover.jpg') center / cover no-repeat;
+    background: linear-gradient(to bottom,
+        rgba(11, 13, 18, 0.66) 0%,
+        rgba(11, 13, 18, 0.12) 18%,
+        rgba(11, 13, 18, 0.08) 32%,
+        rgba(11, 13, 18, 0.64) 58%,
+        rgba(11, 13, 18, 0.9) 100%);
   }
 }
 
 .hero__inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 1000px;
 }
 
@@ -462,6 +465,111 @@ img {
 
 .hero__buttons .btn--outline:hover {
   background: var(--ink);
+}
+
+/* Tertiary to the two CTAs above it: a control, not a third button */
+.hero__watch {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 26px;
+  padding: 6px 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.9);
+  transition: color 0.15s ease-in-out;
+}
+
+.hero__watch svg {
+  flex-shrink: 0;
+  color: var(--accent);
+  transition: transform 0.15s ease-in-out;
+  filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.7));
+}
+
+.hero__watch:hover,
+.hero__watch:focus-visible {
+  color: var(--accent);
+}
+
+.hero__watch:hover svg {
+  transform: scale(1.12);
+}
+
+/* ========================================
+   PROMO VIDEO POP-UP
+   ======================================== */
+
+.video-modal {
+  width: min(1100px, calc(100vw - 40px));
+  max-height: calc(100vh - 40px);
+  margin: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: visible;
+}
+
+.video-modal::backdrop {
+  background: rgba(5, 6, 9, 0.92);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.video-modal__frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  background: #000;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+}
+
+.video-modal__frame video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.video-modal__close {
+  position: absolute;
+  top: -42px;
+  right: 0;
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  font-family: var(--body);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--ink-dim);
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 1;
+}
+
+.video-modal__close:hover,
+.video-modal__close:focus-visible {
+  color: var(--accent);
+}
+
+@media (max-width: 700px) {
+  .video-modal {
+    width: calc(100vw - 24px);
+  }
+
+  .video-modal__close {
+    top: -38px;
+    font-size: 26px;
+  }
 }
 
 /* ========================================
