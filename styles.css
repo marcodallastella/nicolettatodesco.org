@@ -67,8 +67,8 @@
   --bg:        #14161d;
   --bg-deep:   #1b1e28;
   --bg-dark:   #0b0d12;
-  --heading: 'Anton', 'Haettenschweiler', 'Arial Narrow', Impact, sans-serif;
-  --body:  'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --heading: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --body: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
 }
 
 ::selection {
@@ -219,8 +219,8 @@ img {
 
 .header__name {
   font-family: var(--heading);
-  font-size: 26px;
-  font-weight: 400;
+  font-size: 22px;
+  font-weight: 200;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -238,9 +238,9 @@ img {
 }
 
 .header__nav a {
-  font-family: var(--body);
+  font-family: var(--heading);
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 200;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--ink-dim);
@@ -423,8 +423,8 @@ img {
 
 .hero__title {
   font-family: var(--heading);
-  font-size: clamp(38px, 9.5vw, 112px);
-  font-weight: 400;
+  font-size: clamp(38px, 9.5vw, 150px);
+  font-weight: 200;
   letter-spacing: 0.01em;
   line-height: 0.9;
   text-transform: uppercase;
@@ -591,19 +591,19 @@ img {
   position: relative;
 }
 
-.pull-quote::before {
+/* .pull-quote::before {
   content: '';
   display: block;
   width: 56px;
   height: 3px;
   background: var(--accent);
   margin: 0 auto 40px;
-}
+} */
 
 .pull-quote p {
-  font-family: var(--body);
-  font-size: clamp(21px, 3.1vw, 33px);
-  font-weight: 400;
+  font-family: var(--heading);
+  font-size: clamp(21px, 3vw, 28px);
+  font-weight: 200;
   line-height: 1.4;
   text-wrap: balance;
   color: var(--ink);
@@ -725,8 +725,8 @@ img {
 
 .section-title {
   font-family: var(--heading);
-  font-size: clamp(40px, 7vw, 82px);
-  font-weight: 400;
+  font-size: clamp(40px, 5vw, 62px);
+  font-weight: 200;
   line-height: 0.95;
   letter-spacing: 0.01em;
   text-transform: uppercase;
@@ -735,14 +735,14 @@ img {
   margin-bottom: 56px;
 }
 
-.section-title::after {
+/* .section-title::after {
   content: '';
   display: block;
   width: 60px;
   height: 4px;
   background: var(--accent);
   margin: 26px auto 0;
-}
+} */
 
 /* ========================================
    ALBUM
@@ -767,8 +767,8 @@ img {
 
 .album__title {
   font-family: var(--heading);
-  font-size: clamp(38px, 5.4vw, 66px);
-  font-weight: 400;
+  font-size: clamp(38px, 5vw, 60px);
+  font-weight: 200;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   line-height: 0.95;
@@ -807,7 +807,7 @@ img {
   gap: 18px;
   font-family: var(--body);
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 200;
   color: var(--ink-mid);
   padding: 7px 0;
 }
@@ -815,7 +815,7 @@ img {
 .album__tracks li::before {
   content: counter(track, decimal-leading-zero);
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 200;
   letter-spacing: 0.1em;
   color: var(--accent);
 }
@@ -907,8 +907,8 @@ img {
 
 .lyrics-modal__title {
   font-family: var(--heading);
-  font-size: 34px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 200;
   letter-spacing: 0.02em;
   line-height: 1.05;
   text-transform: uppercase;
@@ -919,7 +919,7 @@ img {
 .lyrics-modal__body {
   font-family: var(--body);
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 200;
   line-height: 1.75;
   color: var(--ink-mid);
 }
