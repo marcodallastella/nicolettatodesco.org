@@ -67,7 +67,7 @@
        for styles.css to be downloaded and parsed. crossorigin is
        required even same-origin: fonts are always fetched in CORS mode. -->
   <link rel="preload" href="./fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="./fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+
   <!-- Largest element on first paint, so fetch it early -->
   <link rel="preload" href="./images/hero-poster.jpg" as="image">
   <link rel="stylesheet" href="./styles.css">
@@ -161,23 +161,52 @@
            Save-Data users, who keep the poster). -->
       <video class="hero__video" id="hero-video" muted loop playsinline preload="none"
         poster="images/hero-poster.jpg" data-src="video/hero-loop.mp4" aria-hidden="true" tabindex="-1"></video>
-      <div class="hero__inner">
-        <p class="hero__title">The Cockroach Diary</p>
-        <div class="hero__buttons">
-          <!-- <a href="https://open.spotify.com/album/5UpOgjrms3rAONojmuovnQ" target="_blank" rel="noopener"
-            class="btn">Listen on Spotify</a> -->
-          <a href="https://nicolettatodesco.bandcamp.com/album/the-cockroach-diary" target="_blank" rel="noopener"
-            class="btn btn--outline">Buy on Bandcamp</a>
-        </div>
-        <button class="hero__watch" id="watch-video" type="button">
-          <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
-            <circle cx="13" cy="13" r="12" fill="none" stroke="currentColor" stroke-width="1.5" />
-            <path d="M10.5 8.5l7 4.5-7 4.5z" fill="currentColor" />
-          </svg>
-          Watch with sound
-        </button>
-        <p class="hero__credit">Visuals by <a href="https://www.xuanfilms.com/">Xuan</a></p>
-      </div>
+<div class="hero__inner">
+  <!-- Original title:
+  <p class="hero__title">The Cockroach Diary</p>
+  -->
+<p class="hero__title">The Cockroach Diary</p>
+
+<p class="hero__description">
+  An immersive experience live at National Sawdust, with visuals by
+  <a href="https://www.xuanfilms.com/">Xuan</a>.
+</p>
+
+<p class="hero__description">
+  <time datetime="2026-10-20">October 20, 2026</time> Brooklyn, NY
+</p>
+  <div class="hero__buttons">
+    <!--
+    <a href="https://open.spotify.com/album/5UpOgjrms3rAONojmuovnQ"
+      target="_blank" rel="noopener" class="btn">Listen on Spotify</a>
+    -->
+
+    <!-- Original album button:
+    <a href="https://nicolettatodesco.bandcamp.com/album/the-cockroach-diary"
+      target="_blank" rel="noopener"
+      class="btn btn--outline">Buy on Bandcamp</a>
+    -->
+
+    <a href="https://ci.ovationtix.com/36490/production/1280504?performanceId=11829231"
+      target="_blank" rel="noopener"
+      class="btn btn--outline">Get your ticket</a>
+  </div>
+
+  <!-- <button class="hero__watch" id="watch-video" type="button">
+    <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+      <circle cx="13" cy="13" r="12" fill="none"
+        stroke="currentColor" stroke-width="1.5" />
+      <path d="M10.5 8.5l7 4.5-7 4.5z" fill="currentColor" />
+    </svg>
+    Watch with sound
+  </button> -->
+
+  <!-- Original credit, now included above:
+  <p class="hero__credit">
+    Visuals by <a href="https://www.xuanfilms.com/">Xuan</a>
+  </p>
+  -->
+</div>
     </section>
 
     <!-- Promo video pop-up. The source is attached on open so the full
@@ -697,7 +726,7 @@
             </div>
             <div class="tour__meta">
               <span class="tour__program">The Cockroach Diary (w/Xuan)</span>
-              <a href="https://ci.ovationtix.com/36490/production/1280504" target="_blank" rel="noopener"
+              <a href="https://ci.ovationtix.com/36490/production/1280504?performanceId=11829231" target="_blank" rel="noopener"
                 class="btn btn--sm">Tickets</a>
             </div>
           </article>

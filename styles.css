@@ -4,50 +4,8 @@
    near-black, amber accent, condensed display
    ======================================== */
 
-/* ========================================
-   FONTS — self-hosted (both SIL Open Font License).
-   Served from this origin so they arrive before first
-   paint; index.html preloads the two latin files.
-   The latin-ext files download only if a character in
-   their unicode-range actually appears on the page.
-   ======================================== */
-
-@font-face {
-  font-family: 'Anton';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('fonts/anton-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: 'Anton';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('fonts/anton-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-/* Variable font: one file covers the whole 400-700 range. */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url('fonts/space-grotesk-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url('fonts/space-grotesk-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
+/* Typography: Helvetica headings; native system sans-serif body.
+   No font downloads are required by this stylesheet. */
 
 *,
 *::before,
@@ -68,7 +26,7 @@
   --bg-deep:   #1b1e28;
   --bg-dark:   #0b0d12;
   --heading: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --body: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 ::selection {
@@ -365,10 +323,10 @@ img {
   min-height: 100vh;
   min-height: 100svh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 120px 5vw 7vh;
+  padding: 88px 5vw max(16px, env(safe-area-inset-bottom));
   background: var(--bg-dark);
   overflow: hidden;
 }
@@ -419,19 +377,49 @@ img {
   position: relative;
   z-index: 2;
   max-width: 1000px;
+  width: 100%;
 }
 
 .hero__title {
   font-family: var(--heading);
-  font-size: clamp(38px, 9.5vw, 150px);
+  font-size: clamp(48px, min(12vw, 16svh), 150px);
   font-weight: 200;
-  letter-spacing: 0.01em;
-  line-height: 0.9;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
   text-transform: uppercase;
   text-wrap: balance;
   color: var(--ink);
-  margin-bottom: 34px;
+  margin-bottom: clamp(12px, 2.5svh, 24px);
   text-shadow: 0 4px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* Supports both the class-based hero and the earlier inline-styled HTML.
+   Important declarations below only override those earlier inline styles. */
+.hero__inner > p:not(.hero__title):not(.hero__credit) {
+  font-family: var(--heading);
+  font-size: clamp(18px, min(3vw, 3.5svh), 28px) !important;
+  font-weight: 200;
+  line-height: 1.3 !important;
+  max-width: 720px;
+  margin: 0 auto clamp(10px, 2svh, 20px) !important;
+  text-wrap: balance;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+}
+
+.hero__inner > p:has(time) {
+  font-size: 16px !important;
+  letter-spacing: 0.05em;
+}
+
+.hero__inner > p:not(.hero__title) a {
+  color: inherit;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.hero__inner > p:not(.hero__title) a:hover,
+.hero__inner > p:not(.hero__title) a:focus-visible {
+  color: var(--accent);
 }
 
 .hero__credit {
@@ -472,7 +460,7 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 11px;
-  margin-top: 26px;
+  margin-top: clamp(10px, 2svh, 22px);
   padding: 6px 2px;
   background: none;
   border: none;
@@ -1482,7 +1470,7 @@ img {
 
   /* ---- Hero ---- */
   .hero {
-    padding: 100px 6vw 56px;
+    padding-top: 76px;
   }
 
   .hero__buttons {
@@ -1663,5 +1651,33 @@ img {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+/* Compact event hero on short screens, including landscape phones.
+   Natural content height remains available for accessibility text zoom. */
+@media (max-height: 500px) {
+  .hero {
+    padding-top: 76px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .hero__title {
+    font-size: clamp(28px, 8svh, 40px);
+    margin-bottom: 10px;
+  }
+
+  .hero__inner > p:not(.hero__title):not(.hero__credit) {
+    font-size: 14px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .hero__buttons .btn {
+    padding: 10px 24px;
+    min-height: 44px;
+  }
+
+  .hero__watch {
+    margin-top: 8px;
   }
 }
