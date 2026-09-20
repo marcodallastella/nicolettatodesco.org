@@ -71,6 +71,26 @@
   <!-- Largest element on first paint, so fetch it early -->
   <link rel="preload" href="./images/hero-poster.jpg" as="image">
   <link rel="stylesheet" href="./styles.css">
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2160778504854917');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=2160778504854917&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -159,40 +179,39 @@
       <!-- Silent looping clip. The source lives in data-src so script.js can
            decide whether to load it at all (it skips reduced-motion and
            Save-Data users, who keep the poster). -->
-      <video class="hero__video" id="hero-video" muted loop playsinline preload="none"
-        poster="images/hero-poster.jpg" data-src="video/hero-loop.mp4" aria-hidden="true" tabindex="-1"></video>
-<div class="hero__inner">
-  <!-- Original title:
+      <video class="hero__video" id="hero-video" muted loop playsinline preload="none" poster="images/hero-poster.jpg"
+        data-src="video/hero-loop.mp4" aria-hidden="true" tabindex="-1"></video>
+      <div class="hero__inner">
+        <!-- Original title:
   <p class="hero__title">The Cockroach Diary</p>
   -->
-<p class="hero__title">The Cockroach Diary</p>
+        <p class="hero__title">The Cockroach Diary</p>
 
-<p class="hero__description">
-  An immersive experience live at National Sawdust, with visuals by
-  <a href="https://www.xuanfilms.com/">Xuan</a>.
-</p>
+        <p class="hero__description">
+          An immersive experience live at National Sawdust, with visuals by
+          <a href="https://www.xuanfilms.com/">Xuan</a>.
+        </p>
 
-<p class="hero__description">
-  <time datetime="2026-10-20">October 20, 2026</time> Brooklyn, NY
-</p>
-  <div class="hero__buttons">
-    <!--
+        <p class="hero__description">
+          <time datetime="2026-10-20">October 20, 2026</time> Brooklyn, NY
+        </p>
+        <div class="hero__buttons">
+          <!--
     <a href="https://open.spotify.com/album/5UpOgjrms3rAONojmuovnQ"
       target="_blank" rel="noopener" class="btn">Listen on Spotify</a>
     -->
 
-    <!-- Original album button:
+          <!-- Original album button:
     <a href="https://nicolettatodesco.bandcamp.com/album/the-cockroach-diary"
       target="_blank" rel="noopener"
       class="btn btn--outline">Buy on Bandcamp</a>
     -->
 
-    <a href="https://ci.ovationtix.com/36490/production/1280504?performanceId=11829231"
-      target="_blank" rel="noopener"
-      class="btn btn--outline">Get your ticket</a>
-  </div>
+          <a href="https://ci.ovationtix.com/36490/production/1280504?performanceId=11829231" target="_blank"
+            rel="noopener" class="btn btn--outline">Get your ticket</a>
+        </div>
 
-  <!-- <button class="hero__watch" id="watch-video" type="button">
+        <!-- <button class="hero__watch" id="watch-video" type="button">
     <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
       <circle cx="13" cy="13" r="12" fill="none"
         stroke="currentColor" stroke-width="1.5" />
@@ -201,12 +220,12 @@
     Watch with sound
   </button> -->
 
-  <!-- Original credit, now included above:
+        <!-- Original credit, now included above:
   <p class="hero__credit">
     Visuals by <a href="https://www.xuanfilms.com/">Xuan</a>
   </p>
   -->
-</div>
+      </div>
     </section>
 
     <!-- Promo video pop-up. The source is attached on open so the full
@@ -254,7 +273,9 @@
               as a talented young guitarist with awards at national and international competitions. She went on to the
               Regondi Academy in Milan and completed a Master&rsquo;s in guitar performance at the Conservatory of
               Bologna. In 2017, seeking her own voice as a composer and performer, she moved to the United States to
-              study under Benjamin Verdery at the Yale School of Music. At Yale, she was awarded the Eliot Fisk prize, recognized to an outstanding guitarist whose artistic achievement and dedication have contributed greatly to the department.</p>
+              study under Benjamin Verdery at the Yale School of Music. At Yale, she was awarded the Eliot Fisk prize,
+              recognized to an outstanding guitarist whose artistic achievement and dedication have contributed greatly
+              to the department.</p>
 
             <p>Nicoletta has been an invited artist at the Long Island Guitar Festival, the New York Guitar Seminar,
               Sydney Guitar Festival and Taranaki Guitar Festival, among others, and performed in solo recitals across
@@ -726,8 +747,8 @@
             </div>
             <div class="tour__meta">
               <span class="tour__program">The Cockroach Diary (w/Xuan)</span>
-              <a href="https://ci.ovationtix.com/36490/production/1280504?performanceId=11829231" target="_blank" rel="noopener"
-                class="btn btn--sm">Tickets</a>
+              <a href="https://ci.ovationtix.com/36490/production/1280504?performanceId=11829231" target="_blank"
+                rel="noopener" class="btn btn--sm">Tickets</a>
             </div>
           </article>
 
