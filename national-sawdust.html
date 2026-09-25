@@ -1,12 +1,14 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0b0b">
 
   <title>Nicoletta Todesco — The Cockroach Diary Live at National Sawdust</title>
-  <meta name="description" content="Nicoletta Todesco performs The Cockroach Diary live at National Sawdust in Brooklyn on October 20, 2026 — an immersive audiovisual performance with visuals by Xuan.">
+  <meta name="description"
+    content="Nicoletta Todesco performs The Cockroach Diary live at National Sawdust in Brooklyn on October 20, 2026 — an immersive audiovisual performance with visuals by Xuan.">
 
   <!-- Change this if you use a different final URL -->
   <link rel="canonical" href="https://nicolettatodesco.org/national-sawdust">
@@ -14,7 +16,8 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="The Cockroach Diary — Live at National Sawdust">
-  <meta property="og:description" content="October 20, 2026 · 7:30 PM · Brooklyn. An immersive audiovisual performance by Nicoletta Todesco with visuals by Xuan.">
+  <meta property="og:description"
+    content="October 20, 2026 · 7:30 PM · Brooklyn. An immersive audiovisual performance by Nicoletta Todesco with visuals by Xuan.">
   <meta property="og:url" content="https://nicolettatodesco.org/national-sawdust">
   <meta property="og:image" content="https://nicolettatodesco.org/images/promo-poster.jpg">
   <meta property="og:image:width" content="1280">
@@ -60,7 +63,12 @@
   }
   </script>
 
-    <!-- Meta Pixel Code -->
+  <a href="https://ticketsite.com/your-event"    onclick="fbq('track', 'InitiateCheckout');"    target="_blank">Get
+    Tickets</a>
+  <script>
+    fbq('track', 'InitiateCheckout');
+  </script>
+  <!-- Meta Pixel Code -->
   <script>
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
@@ -73,11 +81,11 @@
       s.parentNode.insertBefore(t, s)
     }(window, document, 'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '4347589235455702');
+    fbq('init', '2160778504854917');
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=4347589235455702&ev=PageView&noscript=1" /></noscript>
+      src="https://www.facebook.com/tr?id=2160778504854917&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
 
   <style>
@@ -86,13 +94,18 @@
       --panel: #131313;
       --text: #f3f1ec;
       --muted: #aaa7a0;
-      --line: rgba(255,255,255,.16);
+      --line: rgba(255, 255, 255, .16);
       --accent: #ff9f43;
       --max: 1220px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -103,8 +116,14 @@
       line-height: 1.5;
     }
 
-    a { color: inherit; }
-    img { display: block; width: 100%; }
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
 
     .wrap {
       width: min(var(--max), calc(100% - 48px));
@@ -169,8 +188,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,.16) 32%, rgba(0,0,0,.86) 88%, #0b0b0b 100%),
-        linear-gradient(90deg, rgba(0,0,0,.58), rgba(0,0,0,.05) 64%);
+        linear-gradient(180deg, rgba(0, 0, 0, .2) 0%, rgba(0, 0, 0, .16) 32%, rgba(0, 0, 0, .86) 88%, #0b0b0b 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, .58), rgba(0, 0, 0, .05) 64%);
     }
 
     .hero__content {
@@ -203,15 +222,15 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 10px 22px;
-      color: rgba(255,255,255,.82);
+      color: rgba(255, 255, 255, .82);
       font-size: clamp(16px, 1.6vw, 21px);
       font-weight: 300;
     }
 
-    .hero__meta span + span::before {
+    .hero__meta span+span::before {
       content: "·";
       margin-right: 22px;
-      color: rgba(255,255,255,.5);
+      color: rgba(255, 255, 255, .5);
     }
 
     .cta-row {
@@ -238,15 +257,20 @@
       transition: .18s ease;
     }
 
-    .button:hover { background: #fff; border-color: #fff; }
+    .button:hover {
+      background: #fff;
+      border-color: #fff;
+    }
 
     .button--ghost {
       background: transparent;
       color: #fff;
-      border-color: rgba(255,255,255,.55);
+      border-color: rgba(255, 255, 255, .55);
     }
 
-    .button--ghost:hover { color: #111; }
+    .button--ghost:hover {
+      color: #111;
+    }
 
     .section {
       padding: 92px 0;
@@ -285,7 +309,9 @@
       font-weight: 300;
     }
 
-    .body-copy p { margin: 0 0 1.25em; }
+    .body-copy p {
+      margin: 0 0 1.25em;
+    }
 
     .details {
       display: grid;
@@ -317,7 +343,9 @@
       font-weight: 400;
     }
 
-    .detail a { text-underline-offset: 4px; }
+    .detail a {
+      text-underline-offset: 4px;
+    }
 
     .visual-section {
       display: grid;
@@ -346,7 +374,9 @@
       color: #171717;
     }
 
-    .visual-section__copy .section-label { color: #67635e; }
+    .visual-section__copy .section-label {
+      color: #67635e;
+    }
 
     .visual-section__copy h2 {
       margin: 18px 0 28px;
@@ -424,37 +454,82 @@
       gap: 20px;
     }
 
-    .footer__inner a { text-underline-offset: 4px; }
+    .footer__inner a {
+      text-underline-offset: 4px;
+    }
 
     .mobile-buy {
       display: none;
     }
 
     @media (max-width: 900px) {
-      .hero { min-height: 88svh; }
-      .hero__content { padding-bottom: 52px; }
-      .intro-grid { grid-template-columns: 1fr; gap: 28px; }
-      .details { grid-template-columns: repeat(2, 1fr); }
-      .visual-section { grid-template-columns: 1fr; }
-      .visual-section__image { min-height: 480px; }
-      .visual-section__copy { padding: 64px 32px 72px; }
-      .visual-section--reverse .visual-section__image { order: 1; }
-      .visual-section--reverse .visual-section__copy { order: 2; }
+      .hero {
+        min-height: 88svh;
+      }
+
+      .hero__content {
+        padding-bottom: 52px;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .details {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .visual-section {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-section__image {
+        min-height: 480px;
+      }
+
+      .visual-section__copy {
+        padding: 64px 32px 72px;
+      }
+
+      .visual-section--reverse .visual-section__image {
+        order: 1;
+      }
+
+      .visual-section--reverse .visual-section__copy {
+        order: 2;
+      }
     }
 
     @media (max-width: 620px) {
-      .wrap { width: min(100% - 32px, var(--max)); }
-      .topbar { padding-top: 18px; }
-      .top-ticket { display: none; }
-      .artist-link { font-size: 11px; }
+      .wrap {
+        width: min(100% - 32px, var(--max));
+      }
+
+      .topbar {
+        padding-top: 18px;
+      }
+
+      .top-ticket {
+        display: none;
+      }
+
+      .artist-link {
+        font-size: 11px;
+      }
 
       .hero {
         min-height: 82svh;
         align-items: end;
       }
 
-      .hero__image { object-position: 52% center; }
-      .hero__content { padding: 130px 0 46px; }
+      .hero__image {
+        object-position: 52% center;
+      }
+
+      .hero__content {
+        padding: 130px 0 46px;
+      }
 
       h1 {
         font-size: clamp(54px, 17vw, 86px);
@@ -468,21 +543,60 @@
         font-size: 16px;
       }
 
-      .hero__meta span + span::before { display: none; }
-      .cta-row { margin-top: 26px; }
-      .button { width: 100%; }
+      .hero__meta span+span::before {
+        display: none;
+      }
 
-      .section { padding: 66px 0; }
-      .lead { font-size: 36px; }
-      .body-copy { margin-top: 26px; font-size: 17px; }
-      .details { grid-template-columns: 1fr; margin-top: 52px; }
-      .detail { min-height: 0; }
+      .cta-row {
+        margin-top: 26px;
+      }
 
-      .visual-section__image { min-height: 360px; }
-      .visual-section__copy h2 { font-size: 48px; }
-      .final-cta { padding: 78px 18px 110px; }
-      .final-cta h2 { font-size: 58px; }
-      .footer__inner { align-items: flex-start; flex-direction: column; }
+      .button {
+        width: 100%;
+      }
+
+      .section {
+        padding: 66px 0;
+      }
+
+      .lead {
+        font-size: 36px;
+      }
+
+      .body-copy {
+        margin-top: 26px;
+        font-size: 17px;
+      }
+
+      .details {
+        grid-template-columns: 1fr;
+        margin-top: 52px;
+      }
+
+      .detail {
+        min-height: 0;
+      }
+
+      .visual-section__image {
+        min-height: 360px;
+      }
+
+      .visual-section__copy h2 {
+        font-size: 48px;
+      }
+
+      .final-cta {
+        padding: 78px 18px 110px;
+      }
+
+      .final-cta h2 {
+        font-size: 58px;
+      }
+
+      .footer__inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
 
       .mobile-buy {
         display: block;
@@ -500,13 +614,18 @@
         letter-spacing: .13em;
         font-size: 12px;
         font-weight: 700;
-        box-shadow: 0 8px 35px rgba(0,0,0,.45);
+        box-shadow: 0 8px 35px rgba(0, 0, 0, .45);
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      * { transition: none !important; }
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition: none !important;
+      }
     }
   </style>
 </head>
@@ -545,12 +664,18 @@
         <div class="intro-grid">
           <p class="section-label">The performance</p>
           <div>
-            <p class="lead">A cockroach becomes an unlikely muse in a one-woman operetta that moves from intimacy to outer space and back again.</p>
+            <p class="lead">A cockroach becomes an unlikely muse in a one-woman operetta that moves from intimacy to
+              outer space and back again.</p>
 
             <div class="body-copy">
-              <p><em>The Cockroach Diary</em> is Nicoletta Todesco’s song cycle for voice, classical guitar and electric guitar. Through theatrical interludes and surreal conversations with an uninvited houseguest, the work explores vulnerability, resilience and artistic identity through contemporary classical music, storytelling, noise and humor.</p>
+              <p><em>The Cockroach Diary</em> is Nicoletta Todesco’s song cycle for voice, classical guitar and electric
+                guitar. Through theatrical interludes and surreal conversations with an uninvited houseguest, the work
+                explores vulnerability, resilience and artistic identity through contemporary classical music,
+                storytelling, noise and humor.</p>
 
-              <p>For this National Sawdust performance, the piece is reimagined as an immersive audiovisual experience with visuals by new media artist and filmmaker <a href="https://www.xuanfilms.com/" target="_blank" rel="noopener">Xuan</a>, transforming the stage into a dreamlike environment.</p>
+              <p>For this National Sawdust performance, the piece is reimagined as an immersive audiovisual experience
+                with visuals by new media artist and filmmaker <a href="https://www.xuanfilms.com/" target="_blank"
+                  rel="noopener">Xuan</a>, transforming the stage into a dreamlike environment.</p>
             </div>
           </div>
         </div>
@@ -570,7 +695,9 @@
           </div>
           <div class="detail">
             <small>Address</small>
-            <strong><a href="https://www.google.com/maps/search/?api=1&query=National+Sawdust+80+North+6th+Street+Brooklyn+NY+11249" target="_blank" rel="noopener">80 N 6th St<br>Brooklyn, NY 11249</a></strong>
+            <strong><a
+                href="https://www.google.com/maps/search/?api=1&query=National+Sawdust+80+North+6th+Street+Brooklyn+NY+11249"
+                target="_blank" rel="noopener">80 N 6th St<br>Brooklyn, NY 11249</a></strong>
           </div>
         </div>
       </div>
@@ -583,7 +710,9 @@
       <div class="visual-section__copy">
         <p class="section-label">Nicoletta Todesco</p>
         <h2 id="about-nicoletta">Voice, guitar, story.</h2>
-        <p>Nicoletta Todesco is a Brooklyn-based guitarist and composer whose performances move between classical and electric guitar, original music and storytelling. Her debut album <em>The Cockroach Diary</em> was released in 2025. She studied at the Yale School of Music and is the director of the New York City Guitar Orchestra.</p>
+        <p>Nicoletta Todesco is a Brooklyn-based guitarist and composer whose performances move between classical and
+          electric guitar, original music and storytelling. Her debut album <em>The Cockroach Diary</em> was released in
+          2025. She studied at the Yale School of Music and is the director of the New York City Guitar Orchestra.</p>
         <a href="https://nicolettatodesco.org">More about Nicoletta →</a>
       </div>
     </section>
@@ -595,7 +724,11 @@
       <div class="visual-section__copy">
         <p class="section-label">Visuals by Xuan</p>
         <h2 id="about-xuan">Music, image, technology.</h2>
-        <p>Xuan is a new media artist, filmmaker and pianist whose work brings music, visual art and technology together. A classically trained pianist, she creates experimental animation, interactive installations, projection mapping and multimedia performances. Her collaborations include Glenn Kotche, Third Coast Percussion and Eighth Blackbird, with work presented at venues including The Metropolitan Museum of Art, the Museum of Contemporary Art Chicago and the Smithsonian American Art Museum.</p>
+        <p>Xuan is a new media artist, filmmaker and pianist whose work brings music, visual art and technology
+          together. A classically trained pianist, she creates experimental animation, interactive installations,
+          projection mapping and multimedia performances. Her collaborations include Glenn Kotche, Third Coast
+          Percussion and Eighth Blackbird, with work presented at venues including The Metropolitan Museum of Art, the
+          Museum of Contemporary Art Chicago and the Smithsonian American Art Museum.</p>
         <a href="https://www.xuanfilms.com/" target="_blank" rel="noopener">Explore Xuan’s work →</a>
       </div>
     </section>
@@ -611,27 +744,22 @@
   <footer>
     <div class="wrap footer__inner">
       <span>© 2026 Nicoletta Todesco</span>
-      <a href="https://www.nationalsawdust.org/event/nicoletta-todesco-the-cockroach-diary" target="_blank" rel="noopener">View event at National Sawdust ↗</a>
+      <a href="https://www.nationalsawdust.org/event/nicoletta-todesco-the-cockroach-diary" target="_blank"
+        rel="noopener">View event at National Sawdust ↗</a>
     </div>
   </footer>
 
   <a class="mobile-buy ticket-link" href="https://ci.ovationtix.com/36490/production/1280504">Buy tickets</a>
 
   <script>
-    // Optional ad tracking: works automatically once Meta Pixel is installed.
     document.querySelectorAll('.ticket-link').forEach(function (link) {
       link.addEventListener('click', function () {
         if (typeof fbq === 'function') {
           fbq('track', 'InitiateCheckout');
         }
-        if (typeof gtag === 'function') {
-          gtag('event', 'ticket_click', {
-            event_category: 'National Sawdust',
-            event_label: 'The Cockroach Diary'
-          });
-        }
       });
     });
   </script>
 </body>
+
 </html>
