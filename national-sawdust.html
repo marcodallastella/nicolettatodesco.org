@@ -624,6 +624,32 @@
         transition: none !important;
       }
     }
+
+    /* CINEMATIC VIDEO */
+
+.cinematic-video {
+  width: 100%;
+  padding: 0;
+  background: #000;
+  border-bottom: 1px solid var(--line);
+}
+
+.cinematic-video__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+}
+
+.cinematic-video__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
   </style>
 
 
@@ -707,6 +733,26 @@
       </div>
     </section>
 
+      <!-- CINEMATIC VIDEO -->
+  <section class="cinematic-video" aria-label="The Cockroach Diary video">
+    <div class="cinematic-video__frame">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/MdStKeBqMh8?rel=0&modestbranding=1"
+        title="The Cockroach Diary — Nicoletta Todesco"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+      <section class="final-cta">
+      <!-- <p class="section-label">One night in Brooklyn</p> -->
+      <h2>October 20<br>National Sawdust</h2>
+      <p>Seated performance · Doors at 6:30 PM</p>
+      <a class="button ticket-link" href="https://ci.ovationtix.com/36490/production/1280504">Get tickets</a>
+    </section>
+
+
     <section class="visual-section" aria-labelledby="about-nicoletta">
       <div class="visual-section__image">
         <img src="images/nikiguitar2.jpeg" alt="Nicoletta Todesco playing classical guitar">
@@ -737,12 +783,7 @@
       </div>
     </section>
 
-    <section class="final-cta">
-      <!-- <p class="section-label">One night in Brooklyn</p> -->
-      <h2>October 20<br>National Sawdust</h2>
-      <p>Seated performance · Doors at 6:30 PM</p>
-      <a class="button ticket-link" href="https://ci.ovationtix.com/36490/production/1280504">Get tickets</a>
-    </section>
+
   </main>
 
   <footer>
