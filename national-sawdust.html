@@ -627,34 +627,125 @@
 
     /* CINEMATIC VIDEO */
 
-.cinematic-video {
-  width: 100%;
-  padding: 0;
-  background: #000;
-  border-bottom: 1px solid var(--line);
-}
+    .cinematic-video {
+      width: 100%;
+      padding: 0;
+      background: #000;
+      border-bottom: 1px solid var(--line);
+    }
 
-.cinematic-video__frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: #000;
-}
+    .cinematic-video__frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #000;
+    }
 
-.cinematic-video__frame iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-}
+    .cinematic-video__frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .cinematic-video {
+      width: 100%;
+      background: #000;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cinematic-video__player {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .cinematic-video__poster {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      border: 0;
+      cursor: pointer;
+      background: #000;
+    }
+
+    .cinematic-video__poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s ease, opacity .3s ease;
+    }
+
+    .cinematic-video__poster:hover img {
+      transform: scale(1.015);
+      opacity: .9;
+    }
+
+
+    /* Minimal play button */
+
+    .cinematic-video__play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      width: 82px;
+      height: 82px;
+
+      border: 1px solid rgba(255, 255, 255, .8);
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(0, 0, 0, .18);
+      backdrop-filter: blur(4px);
+
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .cinematic-video__poster:hover .cinematic-video__play {
+      transform: translate(-50%, -50%) scale(1.08);
+      background: rgba(0, 0, 0, .35);
+    }
+
+    .cinematic-video__triangle {
+      width: 0;
+      height: 0;
+
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      border-left: 15px solid white;
+
+      margin-left: 4px;
+    }
+
+
+    /* YouTube iframe after clicking */
+
+    .cinematic-video__player iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
   </style>
 
 
 
 </head>
+
 
 <body>
 
@@ -733,19 +824,27 @@
       </div>
     </section>
 
-      <!-- CINEMATIC VIDEO -->
-  <section class="cinematic-video" aria-label="The Cockroach Diary video">
-    <div class="cinematic-video__frame">
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/MdStKeBqMh8?rel=0&modestbranding=1&cc_load_policy=0"
-        title="The Cockroach Diary — Nicoletta Todesco"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </section>
 
-      <section class="final-cta">
+    <section class="cinematic-video" aria-label="The Cockroach Diary video">
+
+      <div class="cinematic-video__player" id="video-player">
+
+        <button class="cinematic-video__poster" id="video-play" aria-label="Play The Cockroach Diary video">
+
+          <img src="images/video-poster.jpg" alt="Nicoletta Todesco performing The Cockroach Diary">
+
+          <span class="cinematic-video__play">
+            <span class="cinematic-video__triangle"></span>
+          </span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <section class="final-cta">
       <!-- <p class="section-label">One night in Brooklyn</p> -->
       <h2>October 20<br>National Sawdust</h2>
       <p>Seated performance · Doors at 6:30 PM</p>
@@ -760,9 +859,12 @@
       <div class="visual-section__copy">
         <!-- <p class="section-label">Nicoletta Todesco</p> -->
         <h2 id="about-nicoletta">Nicoletta Todesco</h2>
-        <p>Nicoletta Todesco is a Brooklyn-based guitarist and composer whose performances move between classical and
-          electric guitar, original music and storytelling. Her debut album <em>The Cockroach Diary</em> was released in
-          2025. She studied at the Yale School of Music and is the director of the New York City Guitar Orchestra.</p>
+        <p>Nicoletta Todesco is a Brooklyn-based guitarist and composer whose performances move between classical
+          and
+          electric guitar, original music and storytelling. Her debut album <em>The Cockroach Diary</em> was
+          released in
+          2025. She studied at the Yale School of Music and is the director of the New York City Guitar Orchestra.
+        </p>
         <a href="https://nicolettatodesco.org">More about Nicoletta →</a>
       </div>
     </section>
@@ -777,7 +879,8 @@
         <p>Xuan is a new media artist, filmmaker and pianist whose work brings music, visual art and technology
           together. A classically trained pianist, she creates experimental animation, interactive installations,
           projection mapping and multimedia performances. Her collaborations include Glenn Kotche, Third Coast
-          Percussion and Eighth Blackbird, with work presented at venues including The Metropolitan Museum of Art, the
+          Percussion and Eighth Blackbird, with work presented at venues including The Metropolitan Museum of Art,
+          the
           Museum of Contemporary Art Chicago and the Smithsonian American Art Museum.</p>
         <a href="https://www.xuanfilms.com/" target="_blank" rel="noopener">Explore Xuan’s work →</a>
       </div>
@@ -805,6 +908,24 @@
       });
     });
   </script> -->
+
+  <script>
+  const videoPlay = document.getElementById('video-play');
+  const videoPlayer = document.getElementById('video-player');
+
+  videoPlay.addEventListener('click', function () {
+    videoPlayer.innerHTML = `
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/MdStKeBqMh8?autoplay=1&rel=0&cc_load_policy=0"
+        title="MA-MA from The Cockroach Diary by Nicoletta Todesco"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    `;
+  });
+</script>
+
+</body>
 </body>
 
 </html>
