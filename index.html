@@ -72,6 +72,124 @@
   <link rel="preload" href="./images/hero-poster.jpg" as="image">
   <link rel="stylesheet" href="./styles.css">
 
+  <style>
+    /* CINEMATIC VIDEO */
+
+    .cinematic-video {
+      width: 100%;
+      padding: 0;
+      background: #000;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cinematic-video__frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .cinematic-video__frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .cinematic-video {
+      width: 100%;
+      background: #000;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cinematic-video__player {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .cinematic-video__poster {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      border: 0;
+      cursor: pointer;
+      background: #000;
+    }
+
+    .cinematic-video__poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s ease, opacity .3s ease;
+    }
+
+    .cinematic-video__poster:hover img {
+      transform: scale(1.015);
+      opacity: .9;
+    }
+
+
+    /* Minimal play button */
+
+    .cinematic-video__play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      width: 82px;
+      height: 82px;
+
+      border: 1px solid rgba(255, 255, 255, .8);
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(0, 0, 0, .18);
+      backdrop-filter: blur(4px);
+
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .cinematic-video__poster:hover .cinematic-video__play {
+      transform: translate(-50%, -50%) scale(1.08);
+      background: rgba(0, 0, 0, .35);
+    }
+
+    .cinematic-video__triangle {
+      width: 0;
+      height: 0;
+
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      border-left: 15px solid white;
+
+      margin-left: 4px;
+    }
+
+
+    /* YouTube iframe after clicking */
+
+    .cinematic-video__player iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  
+  </style>
  
 </head>
 
@@ -749,7 +867,27 @@
     </section>
 
     <!-- Videos -->
-    <section class="videos" id="videos">
+
+    <section class="cinematic-video" aria-label="The Cockroach Diary video">
+
+      <div class="cinematic-video__player" id="video-player">
+
+        <button class="cinematic-video__poster" id="video-play" aria-label="Play The Cockroach Diary video">
+
+          <img src="images/video-poster.jpg" alt="Nicoletta Todesco performing The Cockroach Diary">
+
+          <span class="cinematic-video__play">
+            <span class="cinematic-video__triangle"></span>
+          </span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- <section class="videos" id="videos">
       <div class="container">
         <h2 class="section-title">Videos</h2>
         <div class="videos__grid">
@@ -783,7 +921,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Shop
     <section class="shop" id="shop">
@@ -888,6 +1026,22 @@
 
   <script src="https://gumroad.com/js/gumroad.js"></script>
   <script src="script.js"></script>
+
+    <script>
+    const videoPlay = document.getElementById('video-play');
+    const videoPlayer = document.getElementById('video-player');
+
+    videoPlay.addEventListener('click', function () {
+      videoPlayer.innerHTML = `
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/MdStKeBqMh8?autoplay=1&rel=0&cc_load_policy=0"
+        title="MA-MA from The Cockroach Diary by Nicoletta Todesco"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    `;
+    });
+  </script>
 </body>
 
 </html>
